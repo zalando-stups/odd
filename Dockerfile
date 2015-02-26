@@ -9,13 +9,15 @@ RUN mkdir -p -m0755 /var/run/sshd
 
 COPY supervisord.conf /etc/supervisord.conf
 COPY sshd_config /etc/ssh/sshd_config
+COPY run.sh /run.sh
 
 # setup SSH Access Granting Service
 RUN curl -o /usr/local/bin/grant-ssh-access-forced-command.py \
     https://raw.githubusercontent.com/zalando/ssh-access-granting-service/master/grant-ssh-access-forced-command.py
+RUN chmod +x /usr/local/bin/grant-ssh-access-forced-command.py
 RUN useradd --create-home --user-group --groups adm granting-service
 RUN mkdir ~granting-service/.ssh/
-RUN echo 'command="grant-ssh-access-forced-command.py" '$SSH_KEY > ~granting-service/.ssh/authorized_keys
+RUN echo 'PLACEHOLDER' > ~granting-service/.ssh/authorized_keys
 RUN chown granting-service:root -R ~granting-service
 RUN chmod 0700 ~granting-service
 RUN chmod 0700 ~granting-service/.ssh
@@ -23,4 +25,4 @@ RUN chmod 0400 ~granting-service/.ssh/authorized_keys
 
 EXPOSE 22
 
-CMD /usr/bin/supervisord -c /etc/supervisord.conf
+CMD /run.sh
