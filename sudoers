@@ -1,0 +1,5 @@
+Defaults    env_reset
+Defaults    secure_path="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+
+# only the SSH Access Granting Service user is allowed to run sudo
+granting-service ALL=(ALL) NOPASSWD:ALL

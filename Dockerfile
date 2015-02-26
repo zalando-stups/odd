@@ -9,6 +9,7 @@ RUN mkdir -p -m0755 /var/run/sshd
 
 COPY supervisord.conf /etc/supervisord.conf
 COPY sshd_config /etc/ssh/sshd_config
+COPY sudoers /etc/sudoers
 COPY run.sh /run.sh
 
 # setup SSH Access Granting Service
