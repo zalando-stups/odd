@@ -1,5 +1,4 @@
-# vim:syntax=dockerfile
-FROM zalando/openjdk:8u40-b09-2
+FROM zalando/ubuntu:14.04.1-1
 MAINTAINER Henning Jacobs <henning.jacobs@zalando.de>
 
 RUN apt-get update -y
