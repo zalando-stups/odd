@@ -10,6 +10,11 @@ if [ -z "$GRANTING_SERVICE_URL" ]; then
     exit 1
 fi
 
+if [ -n "$HOSTNAME"]; then
+    echo 'Setting hostname to '$HOSTNAME'..'
+    hostname $HOSTNAME
+fi
+
 echo 'ssh_access_granting_service_url: "'$GRANTING_SERVICE_URL'"' > /etc/ssh-access-granting-service.yaml
 echo 'allowed_remote_networks: ['$ALLOWED_REMOTE_NETWORKS']' >> /etc/ssh-access-granting-service.yaml
 
