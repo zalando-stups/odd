@@ -10,6 +10,8 @@ Environment Variables
 
 The Docker image expects the following environment variables to be set:
 
+``HOSTNAME``
+    Use custom hostname for the OpenSSH server.
 ``ALLOWED_REMOTE_NETWORKS``
     List of IP networks (CIDR) the bastion host is allowed to access.
 ``GRANTING_SERVICE_SSH_KEY``
