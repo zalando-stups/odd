@@ -1,0 +1,9 @@
+#!/bin/bash
+
+Bold='\e[1m'
+BBlue='\e[1;34m'
+BRed='\e[1;31m'
+Color_Off='\e[0m'
+
+echo -e "$Bold⎼⎼⎼⎼⎼ ${BBlue}SSH Bastion Host${Color_Off} $Bold⎼⎼⎼⎼⎼"
+echo -e "${BRed}All actions will be logged!${Color_Off}"

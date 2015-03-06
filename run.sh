@@ -10,7 +10,7 @@ if [ -z "$GRANTING_SERVICE_URL" ]; then
     exit 1
 fi
 
-if [ -n "$HOSTNAME"]; then
+if [ -n "$HOSTNAME" ]; then
     echo 'Setting hostname to '$HOSTNAME'..'
     hostname $HOSTNAME
 fi

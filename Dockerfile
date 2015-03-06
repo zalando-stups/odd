@@ -4,6 +4,12 @@ MAINTAINER Henning Jacobs <henning.jacobs@zalando.de>
 RUN apt-get update -y
 RUN apt-get install -y supervisor openssh-server python-setuptools python3-requests python3-yaml
 
+RUN rm /etc/update-motd.d/*
+COPY update-motd /etc/update-motd.d/00-bastion
+RUN bash /etc/update-motd.d/00-bastion > /etc/motd
+RUN rm /run/motd.dynamic
+RUN rm /etc/legal
+
 RUN mkdir -p -m0755 /var/run/sshd
 
 COPY supervisord.conf /etc/supervisord.conf

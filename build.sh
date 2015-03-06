@@ -9,4 +9,4 @@ if [ -n "$STATUS" ]; then
 fi
 
 echo '{"url": "git:'$URL'", "revision": "'$REV'", "author": "'$USER'", "status": "'$STATUS'"}' > scm-source.json
-docker build -t bastion-host .
+docker build -t zalando/ssh-bastion-host .
