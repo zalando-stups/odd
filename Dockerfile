@@ -19,7 +19,7 @@ COPY run.sh /run.sh
 
 # setup SSH Access Granting Service
 RUN curl -o /usr/local/bin/grant-ssh-access-forced-command.py \
-    https://raw.githubusercontent.com/zalando/ssh-access-granting-service/master/grant-ssh-access-forced-command.py
+    https://raw.githubusercontent.com/zalando-stups/even/master/grant-ssh-access-forced-command.py
 RUN chmod +x /usr/local/bin/grant-ssh-access-forced-command.py
 RUN useradd --create-home --user-group --groups adm granting-service
 RUN mkdir ~granting-service/.ssh/

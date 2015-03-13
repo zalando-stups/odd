@@ -26,5 +26,5 @@ Testing
 
     $ ./build.sh
     $ export GRANTING_SERVICE_SSH_KEY=$(cat ~/.ssh/ssh-access-granting-service.pub)
-    $ docker run -d -p 2222:22 -e GRANTING_SERVICE_SSH_KEY="$GRANTING_SERVICE_SSH_KEY" -e GRANTING_SERVICE_URL=https://ssh-access.example.org -e ALLOWED_NETWORKS=10.0.0.0/8 bastion-host
+    $ docker run -d -p 2222:22 -e GRANTING_SERVICE_SSH_KEY="$GRANTING_SERVICE_SSH_KEY" -e GRANTING_SERVICE_URL=https://even.example.org -e ALLOWED_NETWORKS=10.0.0.0/8 bastion-host
     $ ssh -p 2222 granting-service@localhost grant-ssh-access jdoe
