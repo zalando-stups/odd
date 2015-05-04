@@ -10,8 +10,6 @@ Environment Variables
 
 The Docker image expects the following environment variables to be set:
 
-``HOSTNAME``
-    Use custom hostname for the OpenSSH server.
 ``ALLOWED_REMOTE_NETWORKS``
     List of IP networks (CIDR) the bastion host is allowed to access.
 ``GRANTING_SERVICE_SSH_KEY``
@@ -26,5 +24,5 @@ Testing
 
     $ ./build.sh
     $ export GRANTING_SERVICE_SSH_KEY=$(cat ~/.ssh/ssh-access-granting-service.pub)
-    $ docker run -d -p 2222:22 -e GRANTING_SERVICE_SSH_KEY="$GRANTING_SERVICE_SSH_KEY" -e GRANTING_SERVICE_URL=https://even.example.org -e ALLOWED_NETWORKS=10.0.0.0/8 bastion-host
+    $ docker run -d -p 2222:22 -e GRANTING_SERVICE_SSH_KEY="$GRANTING_SERVICE_SSH_KEY" -e GRANTING_SERVICE_URL=https://even.example.org -e ALLOWED_NETWORKS=10.0.0.0/8 stups/odd
     $ ssh -p 2222 granting-service@localhost grant-ssh-access jdoe
