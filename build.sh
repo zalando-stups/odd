@@ -1,6 +1,6 @@
 #!/bin/bash
 
-VERSION=0.1
+VERSION=0.2
 
 REV=$(git rev-parse HEAD)
 URL=$(git config --get remote.origin.url)
