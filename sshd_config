@@ -86,3 +86,8 @@ Subsystem sftp /usr/lib/openssh/sftp-server
 # PAM authentication, then enable this but set PasswordAuthentication
 # and ChallengeResponseAuthentication to 'no'.
 UsePAM yes
+
+# This allows to set reverse tunnels which is useful for selenium 
+# testing instances that then can be used by a user to test his 
+# local web server for example.
+GatewayPorts yes
