@@ -1,0 +1,5 @@
+# needed for grant-ssh-access-forced-command.py
+requests
+PyYAML
+# convenience HTTP command line client
+httpie

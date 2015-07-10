@@ -1,8 +1,10 @@
-FROM zalando/ubuntu:14.04.1-3
+FROM zalando/python:3.4.0-1
 MAINTAINER Henning Jacobs <henning.jacobs@zalando.de>
 
 RUN apt-get update -y
-RUN apt-get install -y supervisor openssh-server python-setuptools python3-requests python3-yaml
+RUN apt-get install -y supervisor openssh-server
+COPY requirements.txt /
+RUN pip3 install -r /requirements.txt
 
 RUN rm /etc/update-motd.d/*
 COPY update-motd /etc/update-motd.d/00-bastion
