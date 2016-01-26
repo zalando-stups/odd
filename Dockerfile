@@ -1,4 +1,4 @@
-FROM zalando/python:3.4.0-1
+FROM registry.opensource.zalan.do/stups/python:3.5.0-5
 MAINTAINER Henning Jacobs <henning.jacobs@zalando.de>
 
 RUN apt-get update -y && apt-get install -y supervisor openssh-server psmisc
