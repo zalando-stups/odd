@@ -5,11 +5,11 @@ RUN apt-get update -y && apt-get install -y supervisor openssh-server psmisc pyt
 COPY requirements.txt /
 RUN pip3 install -r /requirements.txt
 
-RUN rm /etc/update-motd.d/*
+RUN rm -f /etc/update-motd.d/*
 COPY update-motd /etc/update-motd.d/00-bastion
 RUN bash /etc/update-motd.d/00-bastion > /etc/motd
-RUN rm /run/motd.dynamic
-RUN rm /etc/legal
+RUN rm -f /run/motd.dynamic
+RUN rm -f /etc/legal
 
 RUN mkdir -p -m0755 /var/run/sshd
 
