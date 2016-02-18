@@ -1,7 +1,7 @@
 FROM registry.opensource.zalan.do/stups/ubuntu:UPSTREAM
 MAINTAINER Zalando SE
 
-RUN apt-get update -y && apt-get install -y supervisor openssh-server psmisc
+RUN apt-get update -y && apt-get install -y supervisor openssh-server psmisc python3-pip
 COPY requirements.txt /
 RUN pip3 install -r /requirements.txt
 
