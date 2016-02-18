@@ -1,5 +1,5 @@
-FROM zalando/python:3.4.0-1
-MAINTAINER Henning Jacobs <henning.jacobs@zalando.de>
+FROM registry.opensource.zalan.do/stups/python:UPSTREAM
+MAINTAINER Zalando SE
 
 RUN apt-get update -y && apt-get install -y supervisor openssh-server psmisc
 COPY requirements.txt /

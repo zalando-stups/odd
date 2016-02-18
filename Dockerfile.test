@@ -1,0 +1,5 @@
+FROM UNTESTED
+
+COPY test.py /
+
+RUN /test.py
