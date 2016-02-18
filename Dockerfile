@@ -35,3 +35,4 @@ EXPOSE 22
 CMD /run.sh
 
 COPY scm-source.json /scm-source.json
+RUN purge.sh
