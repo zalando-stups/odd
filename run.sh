@@ -14,7 +14,7 @@ echo 'ssh_access_granting_service_url: "'$GRANTING_SERVICE_URL'"' > /etc/ssh-acc
 echo 'allowed_remote_networks: ['$ALLOWED_REMOTE_NETWORKS']' >> /etc/ssh-access-granting-service.yaml
 
 echo 'Writing SSH public key..'
-echo 'command="grant-ssh-access-forced-command.py" '$GRANTING_SERVICE_SSH_KEY > ~granting-service/.ssh/authorized_keys
+echo "$GRANTING_SERVICE_SSH_KEY" | sed 's/^/command="grant-ssh-access-forced-command.py" /' > ~granting-service/.ssh/authorized_keys
 
 echo 'Starting Supervisor..'
 /usr/bin/supervisord -c /etc/supervisord.conf
