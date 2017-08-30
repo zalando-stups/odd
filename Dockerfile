@@ -32,7 +32,7 @@ RUN chmod 0400 ~granting-service/.ssh/authorized_keys
 
 EXPOSE 22
 
-CMD /run.sh
+CMD ["/run.sh"]
 
 COPY scm-source.json /scm-source.json
 RUN purge.sh

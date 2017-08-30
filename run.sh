@@ -17,4 +17,4 @@ echo 'Writing SSH public key..'
 echo "$GRANTING_SERVICE_SSH_KEYS" | sed 's/^/command="grant-ssh-access-forced-command.py" /' > ~granting-service/.ssh/authorized_keys
 
 echo 'Starting Supervisor..'
-/usr/bin/supervisord -c /etc/supervisord.conf
+exec /usr/bin/supervisord -c /etc/supervisord.conf
