@@ -17,11 +17,10 @@ COPY supervisord.conf /etc/supervisord.conf
 COPY sshd_config /etc/ssh/sshd_config
 COPY sudoers /etc/sudoers
 COPY run.sh /run.sh
+COPY odd-grant-ssh-access /usr/local/bin/odd-grant-ssh-access
 
 # setup SSH Access Granting Service
-RUN curl -o /usr/local/bin/grant-ssh-access-forced-command.py \
-    https://raw.githubusercontent.com/zalando-stups/even/master/grant-ssh-access-forced-command.py?2
-RUN chmod +x /usr/local/bin/grant-ssh-access-forced-command.py
+RUN chmod +x /usr/local/bin/odd-grant-ssh-access
 RUN useradd --create-home --user-group --groups adm granting-service
 RUN mkdir ~granting-service/.ssh/
 RUN echo 'PLACEHOLDER' > ~granting-service/.ssh/authorized_keys
@@ -32,7 +31,7 @@ RUN chmod 0400 ~granting-service/.ssh/authorized_keys
 
 EXPOSE 22
 
-CMD /run.sh
+CMD ["/run.sh"]
 
 COPY scm-source.json /scm-source.json
 RUN purge.sh
