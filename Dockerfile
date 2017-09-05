@@ -1,4 +1,4 @@
-FROM registry.opensource.zalan.do/stups/ubuntu:UPSTREAM
+FROM registry.opensource.zalan.do/stups/ubuntu:latest
 MAINTAINER Zalando SE
 
 RUN apt-get update -y && apt-get install -y supervisor openssh-server psmisc python3-pip sudo netcat
