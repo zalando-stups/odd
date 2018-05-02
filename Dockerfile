@@ -1,7 +1,7 @@
 FROM registry.opensource.zalan.do/stups/ubuntu:latest
 MAINTAINER Zalando SE
 
-RUN apt-get update -y && apt-get install -y supervisor openssh-server psmisc python3-pip sudo netcat
+RUN apt-get update -y && apt-get install -y supervisor openssh-server psmisc python3-pip sudo netcat syslog-ng
 COPY requirements.txt /
 RUN pip3 install -r /requirements.txt
 
@@ -29,6 +29,8 @@ RUN chown granting-service:root -R ~granting-service
 RUN chmod 0700 ~granting-service
 RUN chmod 0700 ~granting-service/.ssh
 RUN chmod 0400 ~granting-service/.ssh/authorized_keys
+
+COPY syslog-ng.conf /etc/syslog-ng.conf
 
 EXPOSE 22
 
