@@ -1,0 +1,17 @@
+version: "2017-09-20"
+pipeline:
+- id: build
+  type: script
+  env:
+    REGISTRY: "registry-write.opensource.zalan.do/teapot"
+  commands:
+  - desc: publish
+    cmd: |
+
+      if [[ $CDP_TARGET_BRANCH == master && ! $CDP_PULL_REQUEST_NUMBER ]]; then
+          IMAGE=odd
+      else
+          IMAGE=odd-test
+      fi
+      docker build -t "$REGISTRY/$IMAGE:${CDP_BUILD_VERSION}" .
+      docker push "$REGISTRY/$IMAGE:${CDP_BUILD_VERSION}"
