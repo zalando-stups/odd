@@ -7,6 +7,7 @@ RUN pip3 install -r /requirements.txt
 
 RUN rm -f /etc/update-motd.d/*
 COPY update-motd /etc/update-motd.d/00-bastion
+RUN sed -i '/pam_systemd/d' /etc/pam.d/common-session
 RUN bash /etc/update-motd.d/00-bastion > /etc/motd
 RUN rm -f /run/motd.dynamic
 RUN rm -f /etc/legal
