@@ -16,5 +16,8 @@ echo 'allowed_remote_networks: ['$ALLOWED_REMOTE_NETWORKS']' >> /etc/ssh-access-
 echo 'Writing SSH public key..'
 echo "$GRANTING_SERVICE_SSH_KEY" | sed 's/^/command="grant-ssh-access-forced-command.py" /' > ~granting-service/.ssh/authorized_keys
 
+echo 'Harvesting Host Keys for EC2 instance connect'
+/usr/local/bin/eic_harvest_hostkeys
+
 echo 'Starting Supervisor..'
 exec /usr/bin/supervisord -c /etc/supervisord.conf

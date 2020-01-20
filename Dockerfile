@@ -1,7 +1,10 @@
 FROM registry.opensource.zalan.do/stups/ubuntu:latest
-MAINTAINER Zalando SE
+LABEL maintainer="team-teapot@zalando.de"
 
 RUN apt-get update -y && apt-get install -y supervisor openssh-server psmisc python3-pip sudo netcat syslog-ng
+COPY install_eic.sh /install_eic.sh
+RUN /install_eic.sh && rm -f /install_eic.sh
+
 COPY requirements.txt /
 RUN pip3 install -r /requirements.txt
 
@@ -32,6 +35,9 @@ RUN chmod 0700 ~granting-service/.ssh
 RUN chmod 0400 ~granting-service/.ssh/authorized_keys
 
 COPY syslog-ng.conf /etc/syslog-ng.conf
+
+RUN adduser --system --disabled-login --shell /usr/sbin/nologin --no-create-home --home /nonexistent --quiet ec2-instance-connect
+RUN adduser --home /home/odd --gecos ",,," --quiet --disabled-password odd
 
 EXPOSE 22
 
